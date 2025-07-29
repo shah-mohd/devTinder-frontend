@@ -5,7 +5,7 @@ devTinder is a MERN stack application where developers can create profiles, send
 
 ## tech used:
 
-vite + react
-tailwind CSS
-daisyUI
-react router
+- vite + react
+- tailwind CSS
+- daisyUI
+- react router
