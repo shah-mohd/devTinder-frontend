@@ -38,9 +38,9 @@ const Connections = () => {
         <h1 className="text-xl font-semibold">Connections</h1>
 
         {connections.map((connection) => {
-            // const {firstName, lastName, photoUrl, age, gender, about} = connection;
+            const {_id} = connection;
             return (
-            <div className="flex justify-center my-10">
+            <div key={_id} className="flex justify-center my-10">
                 <UserConnectionProfile user={connection}/>
             </div>
             )
