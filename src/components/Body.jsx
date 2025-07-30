@@ -17,12 +17,13 @@ const Body = () => {
     if(userData) return;
     try{
         const res = await axios.get(BASE_URL + "/profile/view", {withCredentials: true});
-        dispatch(addUser(res.data));
+        console.log(res);
+        dispatch(addUser(res?.data));
     } catch(err) {
       if(err.status === 400){
         return navigate("/login")
       }
-      console.log(err);  
+      console.log(err);
     }
   }
 
