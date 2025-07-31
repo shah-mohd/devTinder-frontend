@@ -19,10 +19,11 @@ const Body = () => {
         const res = await axios.get(BASE_URL + "/profile/view", {withCredentials: true});
         dispatch(addUser(res?.data));
     } catch(err) {
+      console.log(err.response.dat);
       if(err.status === 400){
         return navigate("/login")
       }
-      console.log(err);
+      // console.log(err);
     }
   }
 
