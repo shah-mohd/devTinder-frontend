@@ -1,5 +1,7 @@
-const RequestUserCard = ({user}) => {
-    const {firstName, lastName, photoUrl, age, gender, about} = user;
+const RequestUserCard = ({user, handleRequest}) => {
+    const {_id, firstName, lastName, photoUrl, age, gender, about} = user;
+    // console.log(firstName + " " + _id);
+
   return (
         <div className="flex items-center justify-between border-2 rounded-sm p-5">
         <div className="w-32">
@@ -15,8 +17,8 @@ const RequestUserCard = ({user}) => {
         </div>
 
         <div className="">
-            <button className="btn btn-soft btn-primary mx-2">Reject</button>
-            <button className="btn btn-soft btn-secondary mx-2">Accept</button>
+            <button className="btn btn-soft btn-primary mx-2" onClick={() => handleRequest("rejected", _id)}>Reject</button>
+            <button className="btn btn-soft btn-secondary mx-2" onClick={() => handleRequest("accepted", _id)}>Accept</button>
             
         </div>
 

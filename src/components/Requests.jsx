@@ -1,13 +1,23 @@
 import axios from "axios"
 import { BASE_URL } from "../utils/constants"
 import { useDispatch, useSelector } from "react-redux"
-import { addRequest } from "../utils/requestSlice";
+import { addRequest, removeRequest } from "../utils/requestSlice";
 import { useEffect } from "react";
 import RequestUserCard from "./RequestUserCard";
 
 const Requests = () => {
   const requests = useSelector(store => store.requests);
   const dispatch = useDispatch();
+
+  const reviewRequest = async (status, _id) => {
+    try {
+      console.log(status + " " + _id);
+      const res = await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, {withCredentials: true});
+      dispatch(removeRequest(_id));
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const fetchRequests = async () => {
     try {
@@ -24,7 +34,7 @@ const Requests = () => {
 
   if(!requests) return;
 
-    if(requests.length === 0) return <h1>No Request Found!</h1>
+  if(requests.length === 0) return <h1>No Request Found!</h1>
 
   return (
     <div className="my-10">
@@ -34,7 +44,10 @@ const Requests = () => {
             const {_id, firstName, lastName, photoUrl, age, gender, about} = request.fromUserId;
             return (
             <div key={_id} className="flex justify-center my-10">
-                <RequestUserCard user={{firstName, lastName, photoUrl, age, gender, about}}/>
+                <RequestUserCard 
+                user={{_id: request._id, firstName, lastName, photoUrl, age, gender, about}}
+                handleRequest={reviewRequest}
+                />
             </div>
             )
         })}
