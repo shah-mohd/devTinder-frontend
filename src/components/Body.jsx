@@ -9,9 +9,9 @@ import { useEffect } from 'react'
 
 const Body = () => {
 
+  const userData = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData = useSelector(store => store.user);
 
   const fetchUser = async () => {
     if(userData) return;
@@ -19,11 +19,10 @@ const Body = () => {
         const res = await axios.get(BASE_URL + "/profile/view", {withCredentials: true});
         dispatch(addUser(res?.data));
     } catch(err) {
-      console.log(err.response.dat);
-      if(err.status === 400){
-        return navigate("/login")
+      console.log("ERROR:", err.response?.status, err.response?.data);
+      if(err?.response?.status === 401){
+        return navigate("/login");
       }
-      // console.log(err);
     }
   }
 

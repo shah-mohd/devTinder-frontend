@@ -1,6 +1,5 @@
 const RequestUserCard = ({user, handleRequest}) => {
     const {_id, firstName, lastName, photoUrl, age, gender, about} = user;
-    // console.log(firstName + " " + _id);
 
   return (
         <div className="flex items-center justify-between border-2 rounded-sm p-5">
