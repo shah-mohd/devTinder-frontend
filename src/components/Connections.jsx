@@ -35,7 +35,7 @@ const Connections = () => {
 
   return (
     <div className="my-10">
-        <h1 className="text-xl font-semibold">Connections</h1>
+        <h1 className="flex justify-center text-xl font-semibold">Your Connections</h1>
 
         {connections.map((connection) => {
             const {_id} = connection;

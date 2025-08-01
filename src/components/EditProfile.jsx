@@ -39,7 +39,10 @@ const EditProfile = ({user}) => {
 
   return (
     <>
-        <div className="flex justify-center my-10">
+        <div className="md:flex md:justify-center my-5">
+            <div className="flex justify-center">
+                <UserCard user={{firstName, lastName, photoUrl, age, gender, about}} />
+            </div>
             <div className="flex justify-center mx-10">
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                         <legend className="fieldset-legend">Edit Profile</legend>
@@ -105,8 +108,6 @@ const EditProfile = ({user}) => {
                         >Save Profile</button>
                     </fieldset>
             </div>
-
-            <UserCard user={{firstName, lastName, photoUrl, age, gender, about}} />
         </div>
 
         {showToast && <div className="toast toast-top toast-center">
